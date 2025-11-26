@@ -36,7 +36,7 @@ jobs:
       - name: Build docs
         uses: diplodoc-platform/docs-build-static-action@v1
         with:
-          src-root: './docs'
+          src-root: './'
           build-root: './docs-html'
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

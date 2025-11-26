@@ -1,4 +1,7 @@
 allowHTML: true
-lang: 'en'
-langs: ['en', 'ru']
+lang: 'ru'
+langs: ['ru']
+resources:
+  style:
+    - _assets/style/custom.css
 

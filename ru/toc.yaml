@@ -11,7 +11,7 @@ analytics:
 
 navigation:
   logo:
-    url: "https://github.ru/"
+    url: "https://docwise.vinchiklenin.ru/"
     dark:
       icon: "./_assets/images/Logo-dark.svg"
     light:
@@ -35,5 +35,7 @@ items:
     include:
       path: gui/toc.yaml
       mode: link
+  - name: Полезные ссылки
+    href: links.md
   - name: Помощь
     href: help.md

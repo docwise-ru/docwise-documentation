@@ -14,7 +14,7 @@ search:
   tolerance: 2
   confidense: phrased
 docs-viewer:
-  favicon-src: "_assets/images/favicon.ico"
+  favicon-src: _assets/images/favicon.ico
   project-name: Документация сервиса Доквайс
   logo-options:
     title: Доквайс

@@ -5,7 +5,6 @@ langs: ['ru']
 vcs: true
 authors: true
 contributors: true
-mtimes: true
 interface:
   favicon-src:  _assets/images/favicon.ico
 authors: true

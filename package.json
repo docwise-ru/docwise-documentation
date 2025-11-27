@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@diplodoc/algolia-extension": "^0.5.2"
+  }
+}

@@ -19,7 +19,7 @@ blocks:
     resetPaddings: true
     verticalOffset: l
     description: |-
-      Доквайс — сервис для распознования бухгалтерских документов
+      ДокВайс — сервис для распознования бухгалтерских документов
     background:
       image:
         src: ../_assets/images/back.png

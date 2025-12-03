@@ -140,6 +140,7 @@
             "subtotal": 58258.95,
             "sum-excise": null,
             "tax_rate": "18%",
+            "tax-sum": 10486.61,
             "subtotal_with_tax": 6264.88,
             "origin_country_cod": 384,
             "origin_country_name": "КОТ Д'ИВУАР",

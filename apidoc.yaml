@@ -27,14 +27,22 @@ paths:
           description: Некорректные входные данные
           content:
             application/json:
-              example:
-                detail: Некорректные входные данные
+              schema:
+                properties:
+                  detail:
+                    type: string
+                    default: Некорректные входные данные
+                type: object
         '409':
           description: Пользователь с таким email уже существует
           content:
             application/json:
-              example:
-                detail: Объект с такими данными уже существует
+              schema:
+                properties:
+                  detail:
+                    type: string
+                    default: Объект с такими данными уже существует
+                type: object
         '422':
           description: Validation Error
           content:

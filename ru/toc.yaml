@@ -33,8 +33,10 @@ items:
       mode: link
   - name: API
     include:
-      path: gui/toc.yaml
-      mode: link
+      path: apidoc
+      includers:
+        - name: apidoc
+          input: apidoc.yaml
   - name: JSON
     href: json.md
   - name: Полезные ссылки

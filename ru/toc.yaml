@@ -33,7 +33,7 @@ items:
       mode: link
   - name: API
     include:
-      path: apidoc
+      path: apidoc/
       includers:
         - name: apidoc
           input: apidoc.yaml

@@ -21,6 +21,7 @@ td  {font-family: var(--g-text-header-font-family) !important;}
 a {font-family: var(--g-text-header-font-family) !important;}
 
 span {p {font-family: var(--g-text-header-font-family) !important;}}
+summary {font-family: var(--g-text-header-font-family) !important;}
 .g-root {
     --g-border-radius-xs: 10px;
     --g-border-radius-s: 12px;

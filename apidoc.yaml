@@ -27,14 +27,14 @@ paths:
           description: Некорректные входные данные
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                detail: Некорректные входные данные
         '409':
           description: Пользователь с таким email уже существует
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                detail: Объект с такими данными уже существует
         '422':
           description: Validation Error
           content:

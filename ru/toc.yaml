@@ -37,6 +37,7 @@ items:
       includers:
         - name: apidoc
           input: apidoc.yaml
+      mode: link
   - name: JSON
     href: json.md
   - name: Полезные ссылки

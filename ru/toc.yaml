@@ -35,7 +35,7 @@ items:
     include:
       path: apidoc/
       includers:
-        - name: apidoc
+        - name: openapi
           input: apidoc.yaml
       mode: link
   - name: JSON

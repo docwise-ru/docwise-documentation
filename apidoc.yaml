@@ -104,6 +104,16 @@ paths:
                     type: string
                     default: Invalid Token
                 type: object
+        '403':
+          description: У пользователя недостаточно прав
+          content:
+            application/json:
+              schema:
+                properties:
+                  detail:
+                    type: string
+                    default: У вас недостаточно прав
+                type: object
   /users/refresh:
     get:
       tags:
@@ -192,6 +202,16 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UserRead'
+        '403':
+          description: У пользователя недостаточно прав
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  detail:
+                    type: string
+                    default: У вас недостаточно прав
         '404':
           description: Пользователь не найден
           content:
@@ -240,6 +260,16 @@ paths:
                   detail:
                     type: string
                     default: Пользователь обновлен
+        '403':
+          description: У пользователя недостаточно прав
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  detail:
+                    type: string
+                    default: У вас недостаточно прав
         '404':
           description: Пользователь не найден
           content:
@@ -284,7 +314,7 @@ paths:
         '204':
           description: Successful Response
         '403':
-          description: Пользователь не найден
+          description: У пользователя недостаточно прав
           content:
             application/json:
               schema:

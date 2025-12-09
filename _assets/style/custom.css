@@ -1,27 +1,22 @@
-@import url('https://fonts.googleapis.com/css2?family=Commissioner&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Commissioner&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Commissioner:wght@100..900&display=swap');
 
-.g-root h1 {
+.g-root h1 
+{
     font-family: var(--g-text-header-font-family);
     font-weight: 700;
 }
 
-.g-root h2,
-h3,
-h4,
-h5,
-h6 {
+.g-root h2, h3, h4,h5, h6 
+{
     font-family: var(--g-text-header-font-family) !important;
     font-weight: 600;
 }
-p {font-family: var(--g-text-header-font-family) !important;}
-a {font-family: var(--g-text-header-font-family) !important;}
-th {font-family: var(--g-text-header-font-family) !important;}
-td  {font-family: var(--g-text-header-font-family) !important;}
-a {font-family: var(--g-text-header-font-family) !important;}
 
-span {p {font-family: var(--g-text-header-font-family) !important;}}
-summary {font-family: var(--g-text-header-font-family) !important;}
+
+.dc-doc-page-title, .dc-doc-page__body_text-size_m, .dc-nav-toc-panel__control-hint, .dc-nav-toc-panel__control-text, 
+.dc-nav-toc-panel__control-name, .dc-mini-toc__title, .dc-mini-toc__section-link, .yfm-cut-content, .openapi__method,
+p, a, span, summary, td, th {font-family: var(--g-text-header-font-family) !important;}
+
 .g-root {
     --g-border-radius-xs: 10px;
     --g-border-radius-s: 12px;

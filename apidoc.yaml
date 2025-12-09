@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: apidoc
+  title: FastAPI
   version: 0.1.0
 paths:
   /users/register:
@@ -81,25 +81,234 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/HTTPValidationError'
-  /users/protected:
+  /users/me:
     get:
       tags:
         - Auth
-      summary: Protected
-      description: Контент только для зарегистрированных пользователей
-      operationId: protected_users_protected_get
+      summary: Whoami
+      operationId: whoami_users_me_get
+      responses:
+        '200':
+          description: Получить информацию о пользователе
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserMeResponse'
+        '401':
+          description: Неверный токен или истек срок действия. Cделайте рефреш токена
+          content:
+            application/json:
+              schema:
+                properties:
+                  detail:
+                    type: string
+                    default: Invalid Token
+                type: object
+  /users/refresh:
+    get:
+      tags:
+        - Auth
+      summary: Refresh Token
+      description: Обновление access токена
+      operationId: refresh_token_users_refresh_get
+      parameters:
+        - name: refresh_token
+          in: cookie
+          required: false
+          schema:
+            type: string
+            title: Refresh Token
+      responses:
+        '200':
+          description: Получить access-токен
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginResponse'
+        '401':
+          description: Срок действия refresh-токена истек. Войдите в систему заново
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  detail:
+                    type: string
+                    default: Invalid Token
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /users/list:
+    get:
+      tags:
+        - Auth
+      summary: Get Users List
+      description: Получение всех пользователей
+      operationId: get_users_list_users_list_get
+      parameters:
+        - name: user_id
+          in: query
+          required: false
+          schema:
+            type: integer
+            title: User Id
       responses:
         '200':
           description: Successful Response
           content:
             application/json:
-              schema: {}
-        '401':
-          description: Неверный токен или истек срок действия
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserRead'
+                title: Response Get Users List Users List Get
+        '422':
+          description: Validation Error
           content:
             application/json:
-              example:
-                detail: Invalid Token
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /users/{user_id}:
+    get:
+      tags:
+        - Auth
+      summary: Get Particular User
+      description: Получение пользователя по id
+      operationId: get_particular_user_users__user_id__get
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            type: integer
+            title: User Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserRead'
+        '404':
+          description: Пользователь не найден
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  detail:
+                    type: string
+                    default: Пользователь не найден
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /users/update/{user_id}:
+    patch:
+      tags:
+        - Auth
+      summary: Update User
+      description: Обновление пользователя по id
+      operationId: update_user_users_update__user_id__patch
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            type: integer
+            title: User Id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserUpdate'
+      responses:
+        '200':
+          description: Пользователь успешно обновлен
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserRead'
+                type: object
+                properties:
+                  detail:
+                    type: string
+                    default: Пользователь обновлен
+        '404':
+          description: Пользователь не найден
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  detail:
+                    type: string
+                    default: Пользователь не найден
+        '409':
+          description: Пользователь с таким email уже существует
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  detail:
+                    type: string
+                    default: Объект с такими данными уже существует
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /users/delete/{user_id}:
+    delete:
+      tags:
+        - Auth
+      summary: Delete User
+      description: Удаление пользователя по id
+      operationId: delete_user_users_delete__user_id__delete
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            type: integer
+            title: User Id
+      responses:
+        '204':
+          description: Successful Response
+        '403':
+          description: Пользователь не найден
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  detail:
+                    type: string
+                    default: У вас недостаточно прав
+        '404':
+          description: Пользователь не найден
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  detail:
+                    type: string
+                    default: Пользователь не найден
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
     ErrorResponse:
@@ -120,6 +329,15 @@ components:
           title: Detail
       type: object
       title: HTTPValidationError
+    LoginResponse:
+      properties:
+        access_token:
+          type: string
+          title: Access Token
+      type: object
+      required:
+        - access_token
+      title: LoginResponse
     RegisterResponse:
       properties:
         user:
@@ -171,8 +389,19 @@ components:
         - email
         - password
       title: UserLogin
+    UserMeResponse:
+      properties:
+        user:
+          $ref: '#/components/schemas/UserRead'
+      type: object
+      required:
+        - user
+      title: UserMeResponse
     UserRead:
       properties:
+        id:
+          type: integer
+          title: Id
         email:
           type: string
           format: email
@@ -199,10 +428,32 @@ components:
           title: Last Name
       type: object
       required:
+        - id
         - email
         - first_name
         - last_name
       title: UserRead
+    UserUpdate:
+      properties:
+        email:
+          anyOf:
+            - type: string
+              format: email
+            - type: 'null'
+          title: Email
+        first_name:
+          type: string
+          maxLength: 255
+          title: First Name
+        last_name:
+          type: string
+          maxLength: 255
+          title: Last Name
+      type: object
+      required:
+        - first_name
+        - last_name
+      title: UserUpdate
     ValidationError:
       properties:
         loc:

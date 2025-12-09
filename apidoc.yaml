@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: apidoc
+  title: FastAPI
   version: 0.1.0
 paths:
   /users/register:
@@ -81,25 +81,65 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/HTTPValidationError'
-  /users/protected:
+  /users/me:
     get:
       tags:
         - Auth
-      summary: Protected
-      description: Контент только для зарегистрированных пользователей
-      operationId: protected_users_protected_get
+      summary: Whoami
+      operationId: whoami_users_me_get
       responses:
         '200':
-          description: Successful Response
+          description: Получить информацию о пользователе
           content:
             application/json:
-              schema: {}
+              schema:
+                $ref: '#/components/schemas/UserMeResponse'
         '401':
-          description: Неверный токен или истек срок действия
+          description: Неверный токен или истек срок действия. Cделайте рефреш токена
           content:
             application/json:
-              example:
-                detail: Invalid Token
+              schema:
+                properties:
+                  detail:
+                    type: string
+                    default: Invalid Token
+                type: object
+  /users/refresh:
+    get:
+      tags:
+        - Auth
+      summary: Refresh Token
+      operationId: refresh_token_users_refresh_get
+      parameters:
+        - name: refresh_token
+          in: cookie
+          required: false
+          schema:
+            type: string
+            title: Refresh Token
+      responses:
+        '200':
+          description: Получить access-токен
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginResponse'
+        '401':
+          description: Срок действия refresh-токена истек. Войдите в систему заново
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  detail:
+                    type: string
+                    default: Invalid Token
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
     ErrorResponse:
@@ -120,6 +160,15 @@ components:
           title: Detail
       type: object
       title: HTTPValidationError
+    LoginResponse:
+      properties:
+        access_token:
+          type: string
+          title: Access Token
+      type: object
+      required:
+        - access_token
+      title: LoginResponse
     RegisterResponse:
       properties:
         user:
@@ -171,6 +220,14 @@ components:
         - email
         - password
       title: UserLogin
+    UserMeResponse:
+      properties:
+        user:
+          $ref: '#/components/schemas/UserRead'
+      type: object
+      required:
+        - user
+      title: UserMeResponse
     UserRead:
       properties:
         email:

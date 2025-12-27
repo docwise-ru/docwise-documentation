@@ -13,6 +13,7 @@ resources:
   csp:
     - "style-src":
         - "https://fonts.googleapis.com/"
+        - "https://fonts.gstatic.com/"
 search:
   provider: local
   tolerance: 2

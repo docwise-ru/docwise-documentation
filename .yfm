@@ -10,6 +10,9 @@ authors: true
 resources:
   style:
     - _assets/style/custom.css
+  csp:
+    - "style-src":
+        - "https://fonts.googleapis.com/"
 search:
   provider: local
   tolerance: 2

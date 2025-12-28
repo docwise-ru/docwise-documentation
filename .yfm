@@ -15,7 +15,7 @@ resources:
         - "fonts.googleapis.com"
         - "fonts.gstatic.com"
     - "font-scr":
-        - "onts.gstatic.com"
+        - "fonts.gstatic.com"
         - "fonts.googleapis.com"
 search:
   provider: local

@@ -12,9 +12,11 @@ resources:
     - _assets/style/custom.css
   csp:
     - "style-src":
-        - "https://fonts.googleapis.com/"
+        - "fonts.googleapis.com"
+        - "fonts.gstatic.com"
     - "font-scr":
-        - "https://fonts.gstatic.com/"
+        - "onts.gstatic.com"
+        - "fonts.googleapis.com"
 search:
   provider: local
   tolerance: 2

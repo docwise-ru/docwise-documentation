@@ -11,10 +11,9 @@ resources:
   style:
     - _assets/style/custom.css
   csp:
-    - "font-src":
-      - "https://fonts.googleapis.com/"
     - "style-src":
         - "https://fonts.gstatic.com/"
+        - "https://fonts.googleapis.com/"
 search:
   provider: local
   tolerance: 2

@@ -33,7 +33,7 @@ items:
       mode: link
   - name: API
     include:
-      path: API
+      path: User System
       includers:
         - name: openapi
           input: openapi/usersystem.yaml

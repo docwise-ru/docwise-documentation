@@ -59,7 +59,9 @@ p, a, span, summary, td, th {font-family: var(--g-text-header-font-family) !impo
     --g-border-radius-l: 18px;
     --g-border-radius-xl: 22px;
 
-    --g-font-family-sans: 'Commissioner', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+
+    --g-text-header-font-family: 'Commissioner', sans-serif; 
+    --g-font-family-sans: 'Commissioner', sans-serif;
     --g-font-family-monospace: 'Commissioner', 'Monaco', 'Consolas', 'Liberation Mono', 'Ubuntu Mono', 'DejaVu Sans Mono', 'Courier New', 'Courier', monospace;
 }
 

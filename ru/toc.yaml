@@ -36,7 +36,7 @@ items:
       path: API
       includers:
         - name: openapi
-          input: apidoc.yaml
+          input: openapi/usersystem.yaml
       mode: link
   - name: JSON
     href: json.md

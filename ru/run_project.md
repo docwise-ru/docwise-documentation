@@ -73,3 +73,23 @@ uv run uvicorn app.main:app --reload
 ```http
 http://127.0.0.1:8000/docs/
 ```
+
+
+#### Теперь вы можете запустить распознавание
+{% list tabs %}
+
+- Через curl
+
+    ```bash
+    curl -X POST "http://127.0.0.1:8000/docflow/extract" \
+    -H "Accept: application/json" \
+    -F "file=@/example_dir/СФ-2.png;type=image/png"
+    ```
+
+- Через веб-интерфейс
+  
+    Перейдите на страницу http://127.0.0.1:8000/docs, выберите раздел Document flow, откройте вкладку /docflow/extract. Вставьте файл и нажмите try it out.
+
+{% endlist %}
+
+На выходе вы получите JSON из распознанных данных.

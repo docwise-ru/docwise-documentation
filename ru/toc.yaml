@@ -31,12 +31,14 @@ items:
     include:
       path: gui/toc.yaml
       mode: link
+  - name: Запуск проекта
+    include:
+      path: run/toc.yaml
+      mode: link
   - name: API
     include:
       path: api-toc.yaml
       mode: link
-  - name: Запуск проекта
-    href: run_project.md
   - name: JSON
     href: json.md
   - name: Полезные ссылки

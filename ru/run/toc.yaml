@@ -1,0 +1,11 @@
+title: Запуск проекта
+href: index.yaml
+items:
+  - name: 1. Развертка backend
+    href: run_backend.md
+  # - name: 2. Развертка frontend
+  #   href: run_frontend.md
+  # - name: 3. Запуск проекта через CLI
+  #   href: ...
+  # - name: 3. Запуск проекта через сайт
+  #   href: ...

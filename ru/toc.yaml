@@ -45,3 +45,7 @@ items:
     href: links.md
   - name: Помощь
     href: help.md
+  - name: АГР
+    include:
+      path: agr/toc.yaml
+      mode: link

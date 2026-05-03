@@ -1,0 +1,12 @@
+title: АГР
+href: index.yaml
+items:
+  - name: 1. АГР
+    href: start.md
+  - name: 2. Генератор XML
+    href: generator_xml.md
+  - name: 3. Проверка наименований
+    href: check_names.md
+  - name: 4. Проверка файла IFC 
+    href: check_ifc.md
+    
